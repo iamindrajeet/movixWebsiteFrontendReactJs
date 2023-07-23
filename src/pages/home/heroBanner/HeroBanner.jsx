@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
-import useFetch from "../../../hooks/UseFetch";
 import { useSelector } from "react-redux";
 import Img from "../../../components/lazyLoadImage/Img";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
+import UseFetch from "../../../hooks/UseFetch";
 
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
@@ -14,7 +14,7 @@ const HeroBanner = () => {
 
   const navigate = useNavigate();
 
-  const { data, loading } = useFetch("/movie/now_playing");
+  const { data, loading } = UseFetch("/movie/now_playing");
 
   useEffect(() => {
     const randomBackdrop = data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;

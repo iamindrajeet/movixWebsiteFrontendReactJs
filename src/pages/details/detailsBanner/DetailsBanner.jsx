@@ -6,13 +6,13 @@ import dayjs from "dayjs";
 import "./style.scss";
 
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
-import useFetch from "../../../hooks/UseFetch";
 import Genres from "../../../components/genres/Genres";
 import CircleRating from "../../../components/circleRating/CircleRating";
 import Img from "../../../components/lazyLoadImage/Img.jsx";
 import PosterFallback from "../../../assets/no-poster.png";
 import { PlayIcon } from "../PlayIcon";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";
+import UseFetch from "../../../hooks/UseFetch";
 
 const DetailsBanner = ({ video, crew }) => {
   const [show, setShow] = useState(false);
@@ -21,7 +21,7 @@ const DetailsBanner = ({ video, crew }) => {
 
   const { mediaType, id } = useParams();
 
-  const { data, loading } = useFetch(`/${mediaType}/${id}`);
+  const { data, loading } = UseFetch(`/${mediaType}/${id}`);
 
   const { url } = useSelector((state) => state.home);
 
