@@ -3,7 +3,7 @@ import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 import { useSelector } from "react-redux";
-import Img from "../../../components/lazyLoadImage/img";
+import Img from "../../../components/lazyLoadImage/Img";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 
 const HeroBanner = () => {
@@ -12,22 +12,16 @@ const HeroBanner = () => {
 
   const { url } = useSelector((state) => state.home);
 
-  //console.log(url);
-
   const navigate = useNavigate();
 
   const { data, loading } = useFetch("/movie/now_playing");
 
-  //console.log(data)
-
   useEffect(() => {
     const randomBackdrop = data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
-    // console.log(randomBackdrop);
     const bg = (url?.backdrop && randomBackdrop)
       ? `${url.backdrop}${randomBackdrop}`
       : "https://image.tmdb.org/t/p/original/xGIeqQunSj5dxGZVKzNNr9W4vps.jpg";
     
-    // console.log(bg);
     setBackground(bg);
   }, [data, url]);
 
